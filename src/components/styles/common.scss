@@ -1,0 +1,33 @@
+@use "sass:map";
+
+@mixin media-max-width() {
+  $grid-breakpoints: (
+          xs: 0,
+          sm: 576px,
+          md: 768px,
+          lg: 992px,
+          xl: 1200px
+  );
+
+  @each $breakpoint, $size in $grid-breakpoints {
+    @media screen and (max-width: $size) {
+      @content($breakpoint);
+    }
+  }
+}
+
+@mixin media-min-width() {
+  $grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px
+  );
+
+  @each $breakpoint, $size in $grid-breakpoints {
+    @media screen and (min-width: $size) {
+      @content($breakpoint);
+    }
+  }
+}

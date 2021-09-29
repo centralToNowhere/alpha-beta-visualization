@@ -1,0 +1,19 @@
+@use "../styles/common" as common;
+
+.control-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.control-btn {
+  margin: 0 1vh 1vh;
+}
+
+@include common.media-max-width() using ($breakpoint) {
+  @if $breakpoint == sm {
+    .control-container {
+      flex-direction: column;
+    }
+  }
+}
