@@ -75,9 +75,9 @@
     "workbox-webpack-plugin": "5.1.4"
   },
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test"
+    "start": "npx ./scripts/start.js",
+    "build": "npx ./scripts/build.js",
+    "test": "npx ./scripts/test.js"
   },
   "eslintConfig": {
     "extends": [
@@ -98,7 +98,7 @@
     ]
   },
   "devDependencies": {
-    "react-app-rewired": "^2.1.8",
+    "install": "^0.13.0",
     "sass": "^1.35.2",
     "worker-loader": "^3.0.8"
   },

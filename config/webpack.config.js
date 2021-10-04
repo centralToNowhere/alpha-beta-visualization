@@ -370,6 +370,23 @@ module.exports = function (webpackEnv) {
             // TODO: Merge this config once `image/avif` is in the mime-db
             // https://github.com/jshttp/mime-db
             {
+              test: /\.worker\.js$/,
+              use: [
+                {
+                  loader: 'worker-loader',
+                  options: {
+                    esModule: true
+                  }
+                },
+                {
+                  loader: 'babel-loader',
+                  options: {
+                    presets: ["@babel/preset-env"],
+                  },
+                }
+              ]
+            },
+            {
               test: [/\.avif$/],
               loader: require.resolve('url-loader'),
               options: {
