@@ -47,11 +47,6 @@ const generateMoveTree = (tree, maxDepth) => {
 			return;
 		}
 
-		self.postMessage({
-			msg: 'board',
-			value: ChessGame.ascii()
-		});
-
 		if (depth <= 3) {
 			postProgress();
 		}
@@ -63,10 +58,10 @@ const generateMoveTree = (tree, maxDepth) => {
 			const newNode = {
 				side: turn,
 				move: move,
-				next: []
+				children: []
 			};
 
-			node.next.push(newNode);
+			node.children.push(newNode);
 			ChessGame.move(move);
 			visitNextNode(depth, newNode, getNodeProgress(moves.length, prevNodeProgress));
 			ChessGame.undo();
@@ -82,13 +77,15 @@ const generateMoveTree = (tree, maxDepth) => {
 self.onmessage = (event) => {
 	if (event.data.msg === 'generate' && event.data.maxDepth > 0 && event.data.gameState) {
 		if (ChessGame.load(event.data.gameState)) {
-			const moveTree = generateMoveTree({next: []}, event.data.maxDepth);
+			overallProgress = 0;
+			const moveTree = generateMoveTree({children: []}, event.data.maxDepth);
 
 			self.postMessage({
 				msg: 'moveTree',
 				value: moveTree
 			});
 			postProgress();
+
 			return;
 		}
 

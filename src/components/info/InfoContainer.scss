@@ -1,0 +1,6 @@
+@use "../styles/common" as common;
+
+.info-container {
+  text-align: center;
+  font-size: #{min(max(2vh, 2vw), 1.5rem)}
+}

@@ -1,13 +1,8 @@
 @use "../styles/common" as common;
 
 .viewer {
-  padding: 1rem;
   width: 100%;
   margin-bottom: 0;
-
-  &__container {
-    padding: 1rem;
-  }
 
   &__title {
     display: flex;
@@ -22,6 +17,12 @@
       font-size: #{calc(min(max(3vh, 3vw), 2rem))}
     }
   }
+
+  //form > label:before {
+  //  content: "";
+  //  display: table-cell;
+  //  vertical-align: middle;
+  //}
 }
 
 @include common.media-min-width() using ($breakpoint) {

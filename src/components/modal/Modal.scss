@@ -1,0 +1,35 @@
+@use "../styles/common" as common;
+
+.custom-modal {
+  width: 100vw;
+  max-width: none;
+  height: 100%;
+  margin: 0;
+  opacity: 0.9;
+  box-sizing: border-box;
+
+  .modal-header {
+    height: 0;
+    padding: 0;
+    border: 0;
+    z-index: 1;
+
+    .modal-title {
+      padding: 1rem;
+    }
+
+    button.close {
+      margin: 0;
+    }
+  }
+
+  .modal-content {
+    height: 100%;
+    border: 0;
+  }
+
+  .modal-body {
+    display: flex;
+    padding: 0;
+  }
+}

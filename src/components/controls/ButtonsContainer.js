@@ -7,7 +7,7 @@ const ButtonsContainer = (props) => {
 	return (
 		<Container className="control-container">
 			{props.buttons.map((button) => {
-				return (<Button onClick={button.onClick} active={button.active} variant={button.variant || "outline-dark"} className="control-btn" style={button.style}>{button.text}</Button>);
+				return (<Button onClick={button.onClick} disabled={button.disabled} active={button.active} variant={button.variant || "outline-dark"} className="control-btn" style={button.style}>{button.text}</Button>);
 			})}
 		</Container>
 	)

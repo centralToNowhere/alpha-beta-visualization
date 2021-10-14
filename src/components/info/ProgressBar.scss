@@ -1,0 +1,18 @@
+@use "../styles/common" as common;
+@use "../mainView/ColorScheme" as colorScheme;
+
+.progress {
+  height: .5rem;
+}
+
+.progress-bar {
+  background-color: colorScheme.$mainViewColor;
+}
+
+.progress-container {
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%)
+}
