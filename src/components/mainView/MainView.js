@@ -35,7 +35,7 @@ const MainView = () => {
 	}
 
 	const validateDepth = (depth) => {
-		return !Number.isNaN(parseInt(depth)) && depth < 6 && depth >= 0;
+		return !Number.isNaN(parseInt(depth)) && depth < 6 && depth >= 1;
 	};
 
 	const onDepthChange = (e) => {

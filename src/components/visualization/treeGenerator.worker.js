@@ -44,7 +44,7 @@ const generateMoveTree = (tree, maxDepth) => {
 		if (depth === maxDepth) {
 			overallProgress += prevNodeProgress;
 			// evaluate();
-			return;
+			return node;
 		}
 
 		if (depth <= 3) {

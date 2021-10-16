@@ -6,7 +6,6 @@ import './Tree.scss';
 const RD3Component = rd3.Component;
 
 const Tree = (props) => {
-	console.log(props.moveTree.children.length);
 	const [treeDiv, setTreeDiv] = useState(null);
 
 	useEffect(() => {
