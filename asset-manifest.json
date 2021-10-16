@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/alpha-beta-visualization/static/css/main.66388608.chunk.css",
+    "main.js": "/alpha-beta-visualization/static/js/main.9d623d40.chunk.js",
+    "main.js.map": "/alpha-beta-visualization/static/js/main.9d623d40.chunk.js.map",
+    "runtime-main.js": "/alpha-beta-visualization/static/js/runtime-main.906a01f9.js",
+    "runtime-main.js.map": "/alpha-beta-visualization/static/js/runtime-main.906a01f9.js.map",
+    "static/css/2.4c97ca4f.chunk.css": "/alpha-beta-visualization/static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.95974d05.chunk.js": "/alpha-beta-visualization/static/js/2.95974d05.chunk.js",
+    "static/js/2.95974d05.chunk.js.map": "/alpha-beta-visualization/static/js/2.95974d05.chunk.js.map",
+    "static/js/3.92ba896d.chunk.js": "/alpha-beta-visualization/static/js/3.92ba896d.chunk.js",
+    "static/js/3.92ba896d.chunk.js.map": "/alpha-beta-visualization/static/js/3.92ba896d.chunk.js.map",
+    "index.html": "/alpha-beta-visualization/index.html",
+    "static/css/2.4c97ca4f.chunk.css.map": "/alpha-beta-visualization/static/css/2.4c97ca4f.chunk.css.map",
+    "static/css/main.66388608.chunk.css.map": "/alpha-beta-visualization/static/css/main.66388608.chunk.css.map",
+    "static/js/2.95974d05.chunk.js.LICENSE.txt": "/alpha-beta-visualization/static/js/2.95974d05.chunk.js.LICENSE.txt",
+    "static/js/treeGenerator.worker.76043e63.worker.js": "/alpha-beta-visualization/static/js/treeGenerator.worker.76043e63.worker.js",
+    "static/js/treeGenerator.worker.76043e63.worker.js.map": "/alpha-beta-visualization/static/js/treeGenerator.worker.76043e63.worker.js.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.906a01f9.js",
+    "static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.95974d05.chunk.js",
+    "static/css/main.66388608.chunk.css",
+    "static/js/main.9d623d40.chunk.js"
+  ]
+}
