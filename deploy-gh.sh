@@ -3,7 +3,7 @@
 # Deploy develop branch on github pages
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD) \
 && git checkout gh-pages \
-&& git merge develop \
+&& git merge develop --no-edit \
 && npm run build \
 && rm -rf static \
 && mv build/* ./ \
