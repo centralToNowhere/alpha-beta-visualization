@@ -6,7 +6,7 @@ const i18n = {
 	MINIMAX: "Минимакс",
 	START_BUTTON: "Создать дерево ходов",
 	SEARCH_DEPTH: "Глубина поиска:",
-	INVALID_DEPTH: "Глубина поиска - целое число от 0 до 5"
+	INVALID_DEPTH: "Глубина поиска - целое число от 1 до 5"
 }
 
 export default i18n;
