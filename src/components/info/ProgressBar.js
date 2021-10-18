@@ -8,7 +8,7 @@ const ProgressBar = (props) => {
 
 	return (
 		<Container className="progress-container">
-			<ProgressBarBS now={props.progressTreeGen}/>
+			<ProgressBarBS animated now={props.progressTreeGen}/>
 			<h2>{props.progressTreeGen}%</h2>
 		</Container>
 	);
