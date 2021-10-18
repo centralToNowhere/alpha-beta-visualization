@@ -1,12 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import * as d3 from 'd3';
-import rd3 from 'react-d3-library';
 import './Tree.scss';
 
-const RD3Component = rd3.Component;
-
 const Tree = (props) => {
-	const [treeDiv, setTreeDiv] = useState(null);
+	const svgRef = useRef(null);
 
 	useEffect(() => {
 		const screenWidth = window.innerWidth || document.documentElement.clientWidth ||
@@ -24,8 +21,8 @@ const Tree = (props) => {
 
 		function handleZoom(e) {
 			const t = e.transform;
-			const svg = d3.select(".tree-container > svg");
-			const g = svg.select('.tree-container > svg > g')
+			const svg = d3.select(svgRef.current);
+			const g = svg.select("g")
 
 			g.attr("transform", `translate(${t.x + width / 2},${t.y + height / 2}) scale(${t.k})`);
 		}
@@ -36,13 +33,11 @@ const Tree = (props) => {
 			const nodes = hierarchy.descendants();
 			const links = treeData.links();
 
-			const div = document.createElement('div');
-			setTreeDiv(div);
+			const svg = d3.select(svgRef.current);
 
-			const svg = d3.select(div)
-				.attr("class", "tree-container")
-				.append("svg")
-				.attr("width", width)
+			svg.selectAll("*").remove();
+
+			svg.attr("width", width)
 				.attr("height", height);
 
 			const g = svg.append("g")
@@ -57,13 +52,20 @@ const Tree = (props) => {
 			svg.call(zoom);
 
 			const link = g.selectAll(".link")
-				.data(links)
+				.data(links);
 
 			const linkEnter = link.enter().append("path")
 				.attr("class", "link")
 				.attr("d", d3.linkRadial()
 					.angle(d => d.x)
-					.radius(d => d.y));
+					.radius(d => d.y))
+				.style("opacity", 0)
+				.transition()
+				.duration(300)
+				.delay(function(d,i) {
+					return 2 * i / (Math.exp(d.source.depth + 1));
+				})
+				.style("opacity", 1);
 
 			link.transition()
 				.duration(duration)
@@ -81,7 +83,7 @@ const Tree = (props) => {
 			const node = g.selectAll("circle")
 				.data(nodes);
 
-			const nodeEnter = node.enter().append("g")
+			const nodeEnter = node.enter().append("g");
 
 			nodeEnter.append("circle")
 				.attr("r", 5)
@@ -93,16 +95,25 @@ const Tree = (props) => {
 				})
 				.attr("transform", function (d) { return "translate(" + d3.pointRadial(d.x, d.y) + ")"; });
 
-			// nodeEnter.append("text")
-			// 	.attr("x", 10)
-			// 	.attr("dy", ".35em")
-			// 	.attr("text-anchor", "start")
-			// 	.text(function(d) { return d.data.move; })
-			// 	.style("fill-opacity", 1e-6);
-			//
+			nodeEnter.append("text")
+				.attr("text-anchor", "start")
+				.text(function(d) { return d.data.move; })
+				.style("fill-opacity", 1e-6)
+				.attr("text-anchor", function(d) { return d.x * 180 / Math.PI < 180 ? "start" : "end"; })
+				.attr("dominant-baseline", "middle")
+				.attr("transform", function (d) {
+					const angleDeg = d.x * 180 / Math.PI;
+					const rotation = angleDeg < 180 ? -(90 - angleDeg) : -(270 - angleDeg);
+
+					return `translate(${d3.pointRadial(d.x, d.y + 10)})rotate(${rotation})`;
+				})
+				.transition()
+				.duration(duration)
+				.style("fill-opacity", 1)
+
 			// const nodeUpdate = node.transition()
 			// 	.duration(duration)
-			// 	.attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
+			// 	.attr("transform", function(d) { return "translate(" + d3.pointRadial(d.x, d.y) + ")"; })
 			//
 			// nodeUpdate.select("text")
 			// 	.style("fill-opacity", 1)
@@ -127,16 +138,10 @@ const Tree = (props) => {
 		updateTree(props.moveTree);
 	}, [props.moveTree]);
 
-	useEffect(() => {
-		requestAnimationFrame(() => {
-			setTimeout(() => {
-				props.setShowProgressBar(false);
-			}, 0)
-		})
-	}, []);
-
 	return (
-		<RD3Component data={treeDiv}/>
+		<div className="tree-container">
+			<svg ref={svgRef}/>
+		</div>
 	)
 }
 

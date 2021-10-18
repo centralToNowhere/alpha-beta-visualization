@@ -74,6 +74,10 @@ const MainView = () => {
 
 	const onSearchEnd = () => {
 		setModalMsg(algoTranslationsList[algo]);
+		setTimeout(() => {
+			setShowProgressBar(false);
+			setShowTree(true);
+;		}, 500);
 	}
 
 	return (
@@ -128,7 +132,7 @@ const MainView = () => {
 							msg={modalMsg}
 						>
 							{ showTree &&
-								<Tree moveTree={moveTree} setShowProgressBar={setShowProgressBar}/>
+								<Tree moveTree={moveTree}/>
 							}
 							{/*{ !showProgressBar &&*/}
 							{/*	<Arrows/>*/}

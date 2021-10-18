@@ -38,9 +38,8 @@ const ChessBoard = (props) => {
 
 				if (event.data.msg === 'moveTree') {
 					props.setMoveTree(event.data.value);
-					props.setShowTree(true);
+					props.setProgressTreeGen(100);
 					props.onSearchEnd();
-					console.log(event.data.value);
 				}
 
 				if (event.data.msg === 'log') {
