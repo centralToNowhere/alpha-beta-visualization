@@ -1,7 +1,10 @@
 # Alpha-beta algorithm visualization 
 
-## Ejected CRA web app
+Ejected CRA web app with web worker and d3.js
 
+On github pages
+https://centraltonowhere.github.io/alpha-beta-visualization/ 
+##
 Install dependencies:
 ## `npm install`
 
